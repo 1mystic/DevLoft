@@ -141,7 +141,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* --- HEADER --- */
 .site-header {
-    padding: 16px 0;
+    padding: 2rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -152,6 +152,7 @@ img { max-width: 100%; height: auto; display: block; }
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .logo {
     display: flex;
@@ -166,6 +167,9 @@ img { max-width: 100%; height: auto; display: block; }
     font-size: 1.4rem;
 }
 .main-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 4px;
     background: var(--color-surface);
