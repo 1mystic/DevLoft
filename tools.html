@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools &mdash; DevLoft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/tools.css">
+</head>
+<body class="tools-page">
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-hammer"></i>
+                <span>DevLoft</span>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="tools.html" class="nav-link active">Tools</a>
+                <a href="docs.html" class="nav-link">Docs</a>
+            </nav>
+            <div class="nav-right">
+                <a href="https://github.com" target="_blank" class="icon-link"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <button class="mobile-tools-toggle" id="mobileToggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="tools-layout" id="toolsLayout">
+        <!-- Sidebar -->
+        <aside class="tools-sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fa-solid fa-wrench"></i> Tools</h3>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#json-toolkit" class="nav-link active" data-tool="json-toolkit">
+                        <i class="fa-solid fa-code fa-fw"></i><span>JSON Toolkit</span>
+                    </a></li>
+                    <li><a href="#stats-calc" class="nav-link" data-tool="stats-calc">
+                        <i class="fa-solid fa-chart-simple fa-fw"></i><span>Statistics</span>
+                    </a></li>
+                    <li><a href="#unicode-md" class="nav-link" data-tool="unicode-md">
+                        <i class="fa-solid fa-font fa-fw"></i><span>Unicode to MD</span>
+                    </a></li>
+                    <li><a href="#text-diff" class="nav-link" data-tool="text-diff">
+                        <i class="fa-solid fa-code-compare fa-fw"></i><span>Text Diff</span>
+                    </a></li>
+                    <li><a href="#sanitizer" class="nav-link" data-tool="sanitizer">
+                        <i class="fa-solid fa-shield-halved fa-fw"></i><span>Sanitizer</span>
+                    </a></li>
+                    <li><a href="#csv-sql" class="nav-link" data-tool="csv-sql">
+                        <i class="fa-solid fa-database fa-fw"></i><span>CSV to SQL</span>
+                    </a></li>
+                    <li><a href="#date-calc" class="nav-link" data-tool="date-calc">
+                        <i class="fa-solid fa-calendar-days fa-fw"></i><span>Date Calc</span>
+                    </a></li>
+                    <li><a href="#llm-cost" class="nav-link" data-tool="llm-cost">
+                        <i class="fa-solid fa-robot fa-fw"></i><span>LLM Cost</span>
+                    </a></li>
+                    <li><a href="#hash-encode" class="nav-link" data-tool="hash-encode">
+                        <i class="fa-solid fa-fingerprint fa-fw"></i><span>Hash &amp; Encode</span>
+                    </a></li>
+                    <li><a href="#md-html" class="nav-link" data-tool="md-html">
+                        <i class="fa-brands fa-markdown fa-fw"></i><span>MD to HTML</span>
+                    </a></li>
+                    <li class="sidebar-divider"><span>More Tools</span></li>
+                    <li><a href="#regex-tester" class="nav-link" data-tool="regex-tester">
+                        <i class="fa-solid fa-asterisk fa-fw"></i><span>Regex Tester</span>
+                    </a></li>
+                    <li><a href="#json-sort" class="nav-link" data-tool="json-sort">
+                        <i class="fa-solid fa-filter fa-fw"></i><span>JSON Sort &amp; Filter</span>
+                    </a></li>
+                    <li><a href="#word-counter" class="nav-link" data-tool="word-counter">
+                        <i class="fa-solid fa-spell-check fa-fw"></i><span>Word Counter</span>
+                    </a></li>
+                    <li><a href="#base-converter" class="nav-link" data-tool="base-converter">
+                        <i class="fa-solid fa-hashtag fa-fw"></i><span>Base Converter</span>
+                    </a></li>
+                    <li><a href="#color-converter" class="nav-link" data-tool="color-converter">
+                        <i class="fa-solid fa-palette fa-fw"></i><span>Color Converter</span>
+                    </a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="tools-content">
+
+            <!-- ========== 1. JSON TOOLKIT ========== -->
+            <section class="tool-section active" id="json-toolkit">
+                <h2><i class="fa-solid fa-code"></i> JSON Toolkit</h2>
+                <p class="tool-description">Format, minify, validate JSON and convert between row-based and columnar formats. Born from tasks Q29 &amp; Q30.</p>
+                <div class="tool-workspace">
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Input JSON</label>
+                            <textarea id="json-input" placeholder='Paste your JSON here...
+Example: [{"name":"Alice","age":30},{"name":"Bob","age":25}]'></textarea>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.json.format()"><i class="fa-solid fa-align-left"></i> Format</button>
+                        <button class="btn btn-tool" onclick="DevLoft.json.minify()"><i class="fa-solid fa-compress"></i> Minify</button>
+                        <button class="btn btn-tool" onclick="DevLoft.json.validate()"><i class="fa-solid fa-check"></i> Validate</button>
+                        <button class="btn btn-outline" onclick="DevLoft.json.toColumnar()"><i class="fa-solid fa-table-columns"></i> Rows to Columnar</button>
+                        <button class="btn btn-outline" onclick="DevLoft.json.toRows()"><i class="fa-solid fa-table-list"></i> Columnar to Rows</button>
+                        <button class="btn btn-copy" onclick="DevLoft.copyOutput('json-output', event)"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Output</label>
+                            <div class="output-box" id="json-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 2. STATISTICS CALCULATOR ========== -->
+            <section class="tool-section" id="stats-calc">
+                <h2><i class="fa-solid fa-chart-simple"></i> Statistics Calculator</h2>
+                <p class="tool-description">Compute mean, median, variance (with Bessel's correction), and standard deviation. From task Q37.</p>
+                <div class="tool-workspace">
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Enter numbers (comma or newline separated)</label>
+                            <textarea id="stats-input" class="short" placeholder="e.g. 10, 20, 30, 40, 50&#10;or one number per line"></textarea>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.stats.calculate()"><i class="fa-solid fa-calculator"></i> Calculate</button>
+                        <button class="btn btn-outline" onclick="DevLoft.stats.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                    </div>
+                    <div class="result-card" id="stats-results" style="display:none;">
+                        <h4>Results</h4>
+                        <div class="result-grid" id="stats-grid"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 3. UNICODE to MARKDOWN ========== -->
+            <section class="tool-section" id="unicode-md">
+                <h2><i class="fa-solid fa-font"></i> Unicode to Markdown</h2>
+                <p class="tool-description">Convert mathematical styled Unicode text (bold, italic, monospace) into standard Markdown syntax. From task Q34.</p>
+                <div class="tool-workspace">
+                    <div class="io-row">
+                        <div class="io-panel">
+                            <label>Unicode Input</label>
+                            <textarea id="unicode-input" placeholder="Paste text with bold, italic, or monospace Unicode characters..."></textarea>
+                        </div>
+                        <div class="io-panel">
+                            <label>Markdown Output</label>
+                            <div class="output-box" id="unicode-output"></div>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.unicode.convert()"><i class="fa-solid fa-arrow-right"></i> Convert</button>
+                        <button class="btn btn-outline" onclick="DevLoft.unicode.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                        <button class="btn btn-copy" onclick="DevLoft.copyOutput('unicode-output', event)"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 4. TEXT DIFF ========== -->
+            <section class="tool-section" id="text-diff">
+                <h2><i class="fa-solid fa-code-compare"></i> Text Diff</h2>
+                <p class="tool-description">Compare two texts line-by-line, count differences, and highlight changes. From task Q36.</p>
+                <div class="tool-workspace">
+                    <div class="io-row">
+                        <div class="io-panel">
+                            <label>Text A</label>
+                            <textarea id="diff-input-a" placeholder="Paste first text here..."></textarea>
+                        </div>
+                        <div class="io-panel">
+                            <label>Text B</label>
+                            <textarea id="diff-input-b" placeholder="Paste second text here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.diff.compare()"><i class="fa-solid fa-arrows-left-right"></i> Compare</button>
+                        <button class="btn btn-outline" onclick="DevLoft.diff.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                    </div>
+                    <div class="result-card" id="diff-summary" style="display:none;">
+                        <h4>Diff Summary</h4>
+                        <div class="result-grid" id="diff-stats"></div>
+                    </div>
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Diff Output</label>
+                            <div class="output-box" id="diff-output" style="min-height:150px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 5. INPUT SANITIZER ========== -->
+            <section class="tool-section" id="sanitizer">
+                <h2><i class="fa-solid fa-shield-halved"></i> Input Sanitizer &amp; PII Redactor</h2>
+                <p class="tool-description">Detect XSS attacks, SQL injection attempts, and redact PII like credit cards, SSNs, emails, and API keys. From task Q27.</p>
+                <div class="tool-workspace">
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Input to Scan</label>
+                            <textarea id="sanitizer-input" placeholder='Try: &lt;script&gt;alert("xss")&lt;/script&gt;
+Or: SELECT * FROM users WHERE 1=1 --
+Or: My SSN is 123-45-6789 and email john@example.com
+Or: API key sk-proj-abc123def456'></textarea>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.sanitizer.scan()"><i class="fa-solid fa-magnifying-glass"></i> Scan &amp; Detect</button>
+                        <button class="btn btn-outline" onclick="DevLoft.sanitizer.redact()"><i class="fa-solid fa-eraser"></i> Redact PII</button>
+                        <button class="btn btn-outline" onclick="DevLoft.sanitizer.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                        <button class="btn btn-copy" onclick="DevLoft.copyOutput('sanitizer-output', event)"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                    <div id="sanitizer-alerts"></div>
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Sanitized Output</label>
+                            <div class="output-box" id="sanitizer-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 6. CSV to SQL ========== -->
+            <section class="tool-section" id="csv-sql">
+                <h2><i class="fa-solid fa-database"></i> CSV to SQL Schema</h2>
+                <p class="tool-description">Auto-detect column types from CSV data and generate CREATE TABLE statements. From task Q16.</p>
+                <div class="tool-workspace">
+                    <div class="form-row" style="margin-bottom:16px;">
+                        <div class="form-group">
+                            <label>Table Name</label>
+                            <input type="text" id="csv-table-name" value="my_table" placeholder="Table name">
+                        </div>
+                        <div class="form-group">
+                            <label>SQL Dialect</label>
+                            <select id="csv-dialect">
+                                <option value="postgresql">PostgreSQL</option>
+                                <option value="mysql">MySQL</option>
+                                <option value="sqlite">SQLite</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="io-row">
+                        <div class="io-panel">
+                            <label>CSV Data</label>
+                            <textarea id="csv-input" placeholder="name,age,email,salary,is_active
+Alice,30,alice@example.com,75000.50,true
+Bob,25,bob@test.com,62000.00,false
+Charlie,35,charlie@work.org,89000.75,true"></textarea>
+                        </div>
+                        <div class="io-panel">
+                            <label>Generated SQL</label>
+                            <div class="output-box" id="csv-output"></div>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.csv.generate()"><i class="fa-solid fa-gear"></i> Generate Schema</button>
+                        <button class="btn btn-outline" onclick="DevLoft.csv.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                        <button class="btn btn-copy" onclick="DevLoft.copyOutput('csv-output', event)"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 7. DATE CALCULATOR ========== -->
+            <section class="tool-section" id="date-calc">
+                <h2><i class="fa-solid fa-calendar-days"></i> Date Range Calculator</h2>
+                <p class="tool-description">Count total days, weekdays, weekends, and business days between any two dates. From Entrance Exam Q8.</p>
+                <div class="tool-workspace">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" id="date-start" value="2025-01-01">
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="date" id="date-end" value="2025-12-31">
+                        </div>
+                        <div class="form-group" style="flex:0;">
+                            <label>&nbsp;</label>
+                            <button class="btn btn-tool" onclick="DevLoft.date.calculate()"><i class="fa-solid fa-calculator"></i> Calculate</button>
+                        </div>
+                    </div>
+                    <div class="result-card" id="date-results" style="display:none;">
+                        <h4>Results</h4>
+                        <div class="result-grid" id="date-grid"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 8. LLM COST ESTIMATOR ========== -->
+            <section class="tool-section" id="llm-cost">
+                <h2><i class="fa-solid fa-robot"></i> LLM Cost Estimator</h2>
+                <p class="tool-description">Compare token pricing across popular AI models and find the cheapest option for your use case. From task Q25.</p>
+                <div class="tool-workspace">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Monthly Requests</label>
+                            <input type="number" id="llm-requests" value="10000" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Avg Input Tokens / Request</label>
+                            <input type="number" id="llm-input-tokens" value="500" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Avg Output Tokens / Request</label>
+                            <input type="number" id="llm-output-tokens" value="200" min="1">
+                        </div>
+                        <div class="form-group" style="flex:0;">
+                            <label>&nbsp;</label>
+                            <button class="btn btn-tool" onclick="DevLoft.llm.estimate()"><i class="fa-solid fa-calculator"></i> Estimate</button>
+                        </div>
+                    </div>
+                    <div class="result-card" id="llm-results" style="display:none;">
+                        <h4>Cost Comparison</h4>
+                        <div style="overflow-x:auto;">
+                            <table class="cost-table" id="llm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Input $/1M</th>
+                                        <th>Output $/1M</th>
+                                        <th>Monthly Cost</th>
+                                        <th>Cost/Request</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="llm-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 9. HASH & ENCODE ========== -->
+            <section class="tool-section" id="hash-encode">
+                <h2><i class="fa-solid fa-fingerprint"></i> Hash &amp; Encode</h2>
+                <p class="tool-description">SHA-256 hashing, Base64 encode/decode, and URL encoding. From tasks Q10 &amp; Q11.</p>
+                <div class="tool-workspace">
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Input</label>
+                            <textarea id="hash-input" class="short" placeholder="Enter text to hash or encode..."></textarea>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.hash.sha256()"><i class="fa-solid fa-hashtag"></i> SHA-256</button>
+                        <button class="btn btn-outline" onclick="DevLoft.hash.base64Encode()"><i class="fa-solid fa-lock"></i> Base64 Encode</button>
+                        <button class="btn btn-outline" onclick="DevLoft.hash.base64Decode()"><i class="fa-solid fa-unlock"></i> Base64 Decode</button>
+                        <button class="btn btn-outline" onclick="DevLoft.hash.urlEncode()"><i class="fa-solid fa-link"></i> URL Encode</button>
+                        <button class="btn btn-outline" onclick="DevLoft.hash.urlDecode()"><i class="fa-solid fa-link-slash"></i> URL Decode</button>
+                        <button class="btn btn-copy" onclick="DevLoft.copyOutput('hash-output', event)"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Output</label>
+                            <div class="output-box" id="hash-output" style="min-height:80px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 10. MARKDOWN to HTML ========== -->
+            <section class="tool-section" id="md-html">
+                <h2><i class="fa-brands fa-markdown"></i> Markdown to HTML</h2>
+                <p class="tool-description">Convert Markdown to HTML with live preview. Supports headings, lists, code, tables, blockquotes, and more. From P1 Q4.</p>
+                <div class="tool-workspace">
+                    <div class="io-row">
+                        <div class="io-panel">
+                            <label>Markdown Input</label>
+                            <textarea id="md-input" placeholder="# Hello World
+
+This is **bold** and *italic* text.
+
+- Item 1
+- Item 2
+
+```
+code block
+```
+
+> Blockquote here
+
+| Col A | Col B |
+|-------|-------|
+| 1     | 2     |"></textarea>
+                        </div>
+                        <div class="io-panel">
+                            <label>Preview</label>
+                            <div class="output-box html-preview" id="md-preview"></div>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.md.convert()"><i class="fa-solid fa-arrow-right"></i> Convert</button>
+                        <button class="btn btn-outline" onclick="DevLoft.md.showRaw()"><i class="fa-solid fa-code"></i> Show Raw HTML</button>
+                        <button class="btn btn-outline" onclick="DevLoft.md.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                        <button class="btn btn-copy" onclick="DevLoft.copyOutput('md-raw', event)"><i class="fa-solid fa-copy"></i> Copy HTML</button>
+                    </div>
+                    <div class="io-row io-full" id="md-raw-section" style="display:none;">
+                        <div class="io-panel">
+                            <label>Raw HTML</label>
+                            <div class="output-box" id="md-raw"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 11. REGEX TESTER ========== -->
+            <section class="tool-section" id="regex-tester">
+                <h2><i class="fa-solid fa-asterisk"></i> Regex Tester</h2>
+                <p class="tool-description">Test regular expressions in real-time with match highlighting, capture groups, and flag controls.</p>
+                <div class="tool-workspace">
+                    <div class="form-row" style="margin-bottom:16px;">
+                        <div class="form-group" style="flex:3;">
+                            <label>Pattern</label>
+                            <input type="text" id="regex-pattern" placeholder="e.g. (\d{4})-(\d{2})-(\d{2})">
+                        </div>
+                        <div class="form-group" style="flex:0.5;">
+                            <label>Flags</label>
+                            <input type="text" id="regex-flags" value="gi" placeholder="gi">
+                        </div>
+                    </div>
+                    <div class="io-row">
+                        <div class="io-panel">
+                            <label>Test String</label>
+                            <textarea id="regex-input" placeholder="Enter text to test against the pattern..."></textarea>
+                        </div>
+                        <div class="io-panel">
+                            <label>Highlighted Matches</label>
+                            <div class="output-box html-preview" id="regex-highlight" style="min-height:150px;"></div>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.regex.test()"><i class="fa-solid fa-play"></i> Test</button>
+                        <button class="btn btn-outline" onclick="DevLoft.regex.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                    </div>
+                    <div class="result-card" id="regex-results" style="display:none;">
+                        <h4>Match Details</h4>
+                        <div class="output-box" id="regex-details" style="min-height:80px;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 12. JSON SORT & FILTER ========== -->
+            <section class="tool-section" id="json-sort">
+                <h2><i class="fa-solid fa-filter"></i> JSON Sort &amp; Filter</h2>
+                <p class="tool-description">Sort JSON arrays by any key (ascending/descending) and filter objects by value conditions. From Entrance Exam Q10.</p>
+                <div class="tool-workspace">
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Input JSON Array</label>
+                            <textarea id="jsort-input" placeholder='[{"name":"Charlie","age":35},{"name":"Alice","age":30},{"name":"Bob","age":25}]'></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:16px;">
+                        <div class="form-group">
+                            <label>Sort by Key</label>
+                            <input type="text" id="jsort-key" placeholder="e.g. name, age, score">
+                        </div>
+                        <div class="form-group">
+                            <label>Order</label>
+                            <select id="jsort-order">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Filter (key=value)</label>
+                            <input type="text" id="jsort-filter" placeholder="e.g. age>25 or city=NY">
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-tool" onclick="DevLoft.jsort.sort()"><i class="fa-solid fa-arrow-down-a-z"></i> Sort</button>
+                        <button class="btn btn-tool" onclick="DevLoft.jsort.filter()"><i class="fa-solid fa-filter"></i> Filter</button>
+                        <button class="btn btn-outline" onclick="DevLoft.jsort.sortAndFilter()"><i class="fa-solid fa-wand-magic-sparkles"></i> Sort + Filter</button>
+                        <button class="btn btn-outline" onclick="DevLoft.jsort.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                        <button class="btn btn-copy" onclick="DevLoft.copyOutput('jsort-output', event)"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Output</label>
+                            <div class="output-box" id="jsort-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 13. WORD & CHARACTER COUNTER ========== -->
+            <section class="tool-section" id="word-counter">
+                <h2><i class="fa-solid fa-spell-check"></i> Word &amp; Character Counter</h2>
+                <p class="tool-description">Full text analytics: character, word, sentence, paragraph, and line counts with estimated reading and speaking time.</p>
+                <div class="tool-workspace">
+                    <div class="io-row io-full">
+                        <div class="io-panel">
+                            <label>Input Text</label>
+                            <textarea id="wc-input" placeholder="Paste or type your text here..." oninput="DevLoft.wc.count()"></textarea>
+                        </div>
+                    </div>
+                    <div class="result-card" id="wc-results">
+                        <h4>Text Statistics</h4>
+                        <div class="result-grid" id="wc-grid">
+                            <div class="result-item"><div class="label">Characters</div><div class="value" id="wc-chars">0</div></div>
+                            <div class="result-item"><div class="label">Chars (no spaces)</div><div class="value" id="wc-chars-ns">0</div></div>
+                            <div class="result-item"><div class="label">Words</div><div class="value" id="wc-words">0</div></div>
+                            <div class="result-item"><div class="label">Sentences</div><div class="value" id="wc-sentences">0</div></div>
+                            <div class="result-item"><div class="label">Paragraphs</div><div class="value" id="wc-paragraphs">0</div></div>
+                            <div class="result-item"><div class="label">Lines</div><div class="value" id="wc-lines">0</div></div>
+                            <div class="result-item"><div class="label">Reading Time</div><div class="value" id="wc-read-time">0 sec</div></div>
+                            <div class="result-item"><div class="label">Speaking Time</div><div class="value" id="wc-speak-time">0 sec</div></div>
+                        </div>
+                    </div>
+                    <div class="result-card" id="wc-freq-card" style="display:none;">
+                        <h4>Top Word Frequencies</h4>
+                        <div class="output-box" id="wc-freq" style="min-height:80px;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 14. NUMBER BASE CONVERTER ========== -->
+            <section class="tool-section" id="base-converter">
+                <h2><i class="fa-solid fa-hashtag"></i> Number Base Converter</h2>
+                <p class="tool-description">Convert numbers between Decimal, Hexadecimal, Octal, and Binary representations instantly.</p>
+                <div class="tool-workspace">
+                    <div class="form-row" style="margin-bottom:16px;">
+                        <div class="form-group">
+                            <label>Input Base</label>
+                            <select id="base-from" onchange="DevLoft.base.convert()">
+                                <option value="10" selected>Decimal (10)</option>
+                                <option value="16">Hexadecimal (16)</option>
+                                <option value="8">Octal (8)</option>
+                                <option value="2">Binary (2)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex:2;">
+                            <label>Input Value</label>
+                            <input type="text" id="base-input" placeholder="e.g. 255" oninput="DevLoft.base.convert()">
+                        </div>
+                    </div>
+                    <div class="result-card" id="base-results">
+                        <h4>Conversions</h4>
+                        <div class="result-grid" id="base-grid">
+                            <div class="result-item"><div class="label">Decimal</div><div class="value" id="base-dec">&mdash;</div></div>
+                            <div class="result-item"><div class="label">Hexadecimal</div><div class="value" id="base-hex">&mdash;</div></div>
+                            <div class="result-item"><div class="label">Octal</div><div class="value" id="base-oct">&mdash;</div></div>
+                            <div class="result-item"><div class="label">Binary</div><div class="value" id="base-bin">&mdash;</div></div>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-outline" onclick="DevLoft.base.loadSample()"><i class="fa-solid fa-flask"></i> Load Sample</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== 15. COLOR CONVERTER ========== -->
+            <section class="tool-section" id="color-converter">
+                <h2><i class="fa-solid fa-palette"></i> Color Converter</h2>
+                <p class="tool-description">Convert colors between HEX, RGB, and HSL formats with a live preview swatch. Pick or paste any color value.</p>
+                <div class="tool-workspace">
+                    <div class="form-row" style="margin-bottom:16px; align-items:flex-end;">
+                        <div class="form-group" style="flex:0;">
+                            <label>Picker</label>
+                            <input type="color" id="color-picker" value="#6C63FF" style="width:60px;height:42px;cursor:pointer;border:1px solid var(--color-border);border-radius:var(--border-radius-sm);background:var(--color-background);" onchange="DevLoft.color.fromPicker()">
+                        </div>
+                        <div class="form-group">
+                            <label>HEX</label>
+                            <input type="text" id="color-hex" placeholder="#6C63FF" oninput="DevLoft.color.fromHex()">
+                        </div>
+                        <div class="form-group">
+                            <label>RGB</label>
+                            <input type="text" id="color-rgb" placeholder="rgb(108, 99, 255)" oninput="DevLoft.color.fromRgb()">
+                        </div>
+                        <div class="form-group">
+                            <label>HSL</label>
+                            <input type="text" id="color-hsl" placeholder="hsl(243, 100%, 69%)" oninput="DevLoft.color.fromHsl()">
+                        </div>
+                    </div>
+                    <div class="result-card" id="color-preview-card">
+                        <h4>Preview</h4>
+                        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+                            <div id="color-swatch" style="width:120px;height:80px;border-radius:12px;border:2px solid rgba(255,255,255,0.1);background:#6C63FF;"></div>
+                            <div class="result-grid" style="flex:1;" id="color-details">
+                                <div class="result-item"><div class="label">HEX</div><div class="value" id="color-val-hex">#6C63FF</div></div>
+                                <div class="result-item"><div class="label">RGB</div><div class="value" id="color-val-rgb">rgb(108, 99, 255)</div></div>
+                                <div class="result-item"><div class="label">HSL</div><div class="value" id="color-val-hsl">hsl(243, 100%, 69%)</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn btn-outline" onclick="DevLoft.color.loadSample()"><i class="fa-solid fa-flask"></i> Load Samples</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/tools.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevLoft &mdash; Developer Power Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-hammer"></i>
+                <span>DevLoft</span>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="tools.html" class="nav-link">Tools</a>
+                <a href="docs.html" class="nav-link">Docs</a>
+            </nav>
+            <div class="nav-right">
+                <a href="https://github.com" target="_blank" class="icon-link"><i class="fa-brands fa-github"></i></a>
+                
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-main-content anim-fade-in">
+                    <span class="pill-btn">Open Source Developer Toolkit</span>
+                    <h1 class="hero-title">DEVELOPER<br>POWER TOOLS</h1>
+                    <p class="hero-subtitle">15 essential utilities forged from real data science workflows. JSON processing, statistics, security scanning, regex testing, color conversion, and more &mdash; all running client-side in your browser.</p>
+                    <div class="hero-actions">
+                        <a href="tools.html" class="btn btn-primary btn-lg">Explore Tools <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="docs.html" class="btn btn-secondary btn-lg">API Reference</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">15</span>
+                            <span class="stat-label">Tools</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Dependencies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Client-Side</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">&lt;1s</span>
+                            <span class="stat-label">Load Time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll Indicator -->
+        <section class="scroll-section">
+            <div class="container text-center anim-fade-in">
+                <a href="#tools-grid" class="scroll-down-link">
+                    <div class="circle-arrow">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                    <span>EXPLORE TOOLS</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Tools Grid Section -->
+        <section class="tools-grid-section" id="tools-grid">
+            <div class="container">
+                <div class="section-header anim-fade-in">
+                    <span class="pill-btn">Toolkit</span>
+                    <h2>Forged From Real<br>Data Science Workflows</h2>
+                    <p>Each tool was born from solving actual problems &mdash; then refined into reusable utilities for the community.</p>
+                </div>
+
+                <div class="tools-grid anim-fade-in">
+                    <a href="tools.html#json-toolkit" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-code fa-fw"></i></div>
+                        <h3>JSON Toolkit</h3>
+                        <p>Format, minify, validate &amp; convert JSON between row and columnar formats.</p>
+                        <div class="tool-tags"><span class="tag">Formatter</span><span class="tag">Validator</span></div>
+                    </a>
+
+                    <a href="tools.html#stats-calc" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-simple fa-fw"></i></div>
+                        <h3>Statistics Calculator</h3>
+                        <p>Mean, median, variance &amp; standard deviation with Bessel's correction.</p>
+                        <div class="tool-tags"><span class="tag">Math</span><span class="tag">Analytics</span></div>
+                    </a>
+
+                    <a href="tools.html#unicode-md" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-font fa-fw"></i></div>
+                        <h3>Unicode to Markdown</h3>
+                        <p>Convert mathematical styled Unicode (bold, italic, monospace) to Markdown syntax.</p>
+                        <div class="tool-tags"><span class="tag">Text</span><span class="tag">Conversion</span></div>
+                    </a>
+
+                    <a href="tools.html#text-diff" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-code-compare fa-fw"></i></div>
+                        <h3>Text Diff</h3>
+                        <p>Compare two texts side-by-side, count differences and highlight changes.</p>
+                        <div class="tool-tags"><span class="tag">Compare</span><span class="tag">Debug</span></div>
+                    </a>
+
+                    <a href="tools.html#sanitizer" class="tool-card card card-dark featured">
+                        <div class="tool-icon"><i class="fa-solid fa-shield-halved fa-fw"></i></div>
+                        <h3>Input Sanitizer</h3>
+                        <p>Detect XSS, SQL injection, and redact PII &mdash; credit cards, SSNs, emails, API keys.</p>
+                        <div class="tool-tags"><span class="tag">Security</span><span class="tag">Privacy</span></div>
+                    </a>
+
+                    <a href="tools.html#csv-sql" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-database fa-fw"></i></div>
+                        <h3>CSV to SQL Schema</h3>
+                        <p>Auto-detect column types from CSV data and generate CREATE TABLE statements.</p>
+                        <div class="tool-tags"><span class="tag">Database</span><span class="tag">Generator</span></div>
+                    </a>
+
+                    <a href="tools.html#date-calc" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-calendar-days fa-fw"></i></div>
+                        <h3>Date Calculator</h3>
+                        <p>Count weekdays, weekends, and business days between any two dates.</p>
+                        <div class="tool-tags"><span class="tag">Utility</span><span class="tag">Planning</span></div>
+                    </a>
+
+                    <a href="tools.html#llm-cost" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-robot fa-fw"></i></div>
+                        <h3>LLM Cost Estimator</h3>
+                        <p>Compare token pricing across GPT-4o, Claude, Gemini &amp; more. Find the cheapest model.</p>
+                        <div class="tool-tags"><span class="tag">AI</span><span class="tag">Pricing</span></div>
+                    </a>
+
+                    <a href="tools.html#hash-encode" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-fingerprint fa-fw"></i></div>
+                        <h3>Hash &amp; Encode</h3>
+                        <p>SHA-256 hashing, Base64 encode/decode, URL encoding &mdash; all in one place.</p>
+                        <div class="tool-tags"><span class="tag">Crypto</span><span class="tag">Encode</span></div>
+                    </a>
+
+                    <a href="tools.html#md-html" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-brands fa-markdown fa-fw"></i></div>
+                        <h3>Markdown to HTML</h3>
+                        <p>Convert Markdown to HTML with live preview. Supports tables, code blocks, lists.</p>
+                        <div class="tool-tags"><span class="tag">Markdown</span><span class="tag">Preview</span></div>
+                    </a>
+
+                    <a href="tools.html#regex-tester" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-asterisk fa-fw"></i></div>
+                        <h3>Regex Tester</h3>
+                        <p>Test regular expressions with real-time highlighting, capture groups &amp; flag controls.</p>
+                        <div class="tool-tags"><span class="tag">Regex</span><span class="tag">Testing</span></div>
+                    </a>
+
+                    <a href="tools.html#json-sort" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-filter fa-fw"></i></div>
+                        <h3>JSON Sort &amp; Filter</h3>
+                        <p>Sort arrays by any key and filter objects by value conditions like age&gt;25.</p>
+                        <div class="tool-tags"><span class="tag">Data</span><span class="tag">Filter</span></div>
+                    </a>
+
+                    <a href="tools.html#word-counter" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-spell-check fa-fw"></i></div>
+                        <h3>Word Counter</h3>
+                        <p>Real-time text stats &mdash; words, characters, sentences, reading &amp; speaking time.</p>
+                        <div class="tool-tags"><span class="tag">Text</span><span class="tag">Analytics</span></div>
+                    </a>
+
+                    <a href="tools.html#base-converter" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-hashtag fa-fw"></i></div>
+                        <h3>Base Converter</h3>
+                        <p>Convert numbers between Decimal, Hex, Octal, and Binary instantly.</p>
+                        <div class="tool-tags"><span class="tag">Numbers</span><span class="tag">Conversion</span></div>
+                    </a>
+
+                    <a href="tools.html#color-converter" class="tool-card card card-dark">
+                        <div class="tool-icon"><i class="fa-solid fa-palette fa-fw"></i></div>
+                        <h3>Color Converter</h3>
+                        <p>Convert between HEX, RGB, and HSL with a live color preview swatch.</p>
+                        <div class="tool-tags"><span class="tag">Color</span><span class="tag">Design</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Origin Story Section -->
+        <section class="origin-section">
+            <div class="container anim-fade-in">
+                <div class="origin-grid">
+                    <div class="origin-text">
+                        <span class="pill-btn">Origin</span>
+                        <h2>Built From 40+<br>Data Science Tasks</h2>
+                        <p>DevLoft isn't another generic toolkit. Every utility here was forged while solving real graded assignments &mdash; from building FastAPI servers with semantic search, to writing PNG compressors from scratch, to building AI caching systems.</p>
+                        <p>We extracted the most reusable, impactful patterns and turned them into instant browser-based tools for the developer community.</p>
+                    </div>
+                    <div class="origin-cards">
+                        <div class="card card-dark origin-stat-card">
+                            <i class="fa-solid fa-code"></i>
+                            <h4>40+ Tasks Completed</h4>
+                            <p>Spanning AI, databases, file processing, web scraping, and more.</p>
+                        </div>
+                        <div class="card card-dark origin-stat-card">
+                            <i class="fa-solid fa-bolt"></i>
+                            <h4>Zero Backend Required</h4>
+                            <p>All tools run entirely in your browser &mdash; no data ever leaves your machine.</p>
+                        </div>
+                        <div class="card card-dark origin-stat-card">
+                            <i class="fa-solid fa-globe"></i>
+                            <h4>Deploy Anywhere</h4>
+                            <p>One-click deploy to Vercel, Netlify, or any static host.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container cta-container anim-fade-in">
+                <div class="cta-content">
+                    <h2>START FORGING<br>YOUR WORKFLOW</h2>
+                    <p>All tools. One page. Zero setup.</p>
+                    <a href="tools.html" class="btn btn-primary btn-lg">Launch DevLoft <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-col footer-info">
+                <div class="logo">
+                    <i class="fa-solid fa-hammer"></i>
+                    <span>DevLoft</span>
+                </div>
+                <p>Developer power tools forged from real data science workflows. Open source, client-side, zero dependencies.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="tools.html#json-toolkit">JSON Toolkit</a></li>
+                    <li><a href="tools.html#stats-calc">Statistics</a></li>
+                    <li><a href="tools.html#sanitizer">Sanitizer</a></li>
+                    <li><a href="tools.html#csv-sql">CSV to SQL</a></li>
+                    <li><a href="tools.html#regex-tester">Regex Tester</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>More Tools</h4>
+                <ul>
+                    <li><a href="tools.html#llm-cost">LLM Cost</a></li>
+                    <li><a href="tools.html#hash-encode">Hash &amp; Encode</a></li>
+                    <li><a href="tools.html#md-html">Markdown</a></li>
+                    <li><a href="tools.html#color-converter">Color Converter</a></li>
+                    <li><a href="tools.html#word-counter">Word Counter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="docs.html">API Docs</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">License (MIT)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 DevLoft. Built with data science.</p>
+            <a href="#" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

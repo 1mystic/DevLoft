@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Docs &mdash; DevLoft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/docs.css">
+</head>
+<body class="docs-page">
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-hammer"></i>
+                <span>DevLoft</span>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="tools.html" class="nav-link">Tools</a>
+                <a href="docs.html" class="nav-link active">Docs</a>
+            </nav>
+            <div class="nav-right">
+                <a href="https://github.com" target="_blank" class="icon-link"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <button class="mobile-docs-toggle" id="mobileToggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="docs-layout" id="docsLayout">
+        <aside class="docs-sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fa-solid fa-book"></i> Documentation</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#overview" class="nav-link active"><i class="fa-solid fa-house fa-fw"></i> Overview</a></li>
+                    <li><a href="#json-api" class="nav-link"><i class="fa-solid fa-code fa-fw"></i> JSON Toolkit</a></li>
+                    <li><a href="#stats-api" class="nav-link"><i class="fa-solid fa-calculator fa-fw"></i> Statistics</a></li>
+                    <li><a href="#sanitizer-api" class="nav-link"><i class="fa-solid fa-shield-halved fa-fw"></i> Sanitizer</a></li>
+                    <li><a href="#csv-api" class="nav-link"><i class="fa-solid fa-table fa-fw"></i> CSV to SQL</a></li>
+                    <li><a href="#hash-api" class="nav-link"><i class="fa-solid fa-fingerprint fa-fw"></i> Hash &amp; Encode</a></li>
+                    <li><a href="#regex-api" class="nav-link"><i class="fa-solid fa-asterisk fa-fw"></i> Regex Tester</a></li>
+                    <li><a href="#errors" class="nav-link"><i class="fa-solid fa-triangle-exclamation fa-fw"></i> Error Handling</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <!-- Overview -->
+            <section id="overview">
+                <h1>DevLoft API Reference</h1>
+                <p class="docs-intro">DevLoft exposes all 15 tools as client-side JavaScript functions on the <code>DevLoft</code> global object. You can call any tool programmatically from the browser console.</p>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-circle-info"></i> Client-Side Only</h3>
+                    <p>All DevLoft tools run entirely in the browser. No server calls, no data transmitted. Every function is available on <code>window.DevLoft</code>.</p>
+                </div>
+
+                <h2>Quick Start</h2>
+                <pre><code>// Format JSON
+DevLoft.json.format();
+
+// Calculate statistics
+DevLoft.stats.calculate();
+
+// SHA-256 hash
+await DevLoft.hash.sha256();
+
+// Test a regex
+DevLoft.regex.test();
+
+// Convert colors
+DevLoft.color.fromHex();</code></pre>
+
+                <h2>Architecture</h2>
+                <table>
+                    <thead><tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td>Frontend</td><td>HTML5 / CSS3</td><td>UI &amp; layout</td></tr>
+                        <tr><td>Logic</td><td>Vanilla JS</td><td>All tool implementations</td></tr>
+                        <tr><td>Crypto</td><td>Web Crypto API</td><td>SHA-256 hashing</td></tr>
+                        <tr><td>Hosting</td><td>Any static host</td><td>Vercel, Netlify, GitHub Pages</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- JSON API -->
+            <section id="json-api">
+                <h2>JSON Toolkit</h2>
+                <p>Format, minify, validate, and convert JSON between row and columnar layouts.</p>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.json.format()</code>
+                    </div>
+                    <p>Pretty-prints the JSON in the input textarea with 2-space indentation.</p>
+                </div>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.json.validate()</code>
+                    </div>
+                    <p>Validates JSON and reports type, size, and element/key count. On error, highlights the approximate error position.</p>
+                </div>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.json.toColumnar()</code>
+                    </div>
+                    <p>Converts an array of objects into <code>{columns, data}</code> columnar format.</p>
+                    <h4>Input</h4>
+                    <pre><code>[{"name":"Alice","age":30},{"name":"Bob","age":25}]</code></pre>
+                    <h4>Output</h4>
+                    <pre><code>{"columns":["name","age"],"data":[["Alice",30],["Bob",25]]}</code></pre>
+                </div>
+            </section>
+
+            <!-- Stats API -->
+            <section id="stats-api">
+                <h2>Statistics Calculator</h2>
+                <p>Computes descriptive statistics with Bessel's correction for sample variance.</p>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.stats.calculate()</code>
+                    </div>
+                    <p>Reads comma/newline separated numbers and computes:</p>
+                    <table>
+                        <thead><tr><th>Metric</th><th>Formula</th></tr></thead>
+                        <tbody>
+                            <tr><td>Mean</td><td>sum / n</td></tr>
+                            <tr><td>Median</td><td>Middle value of sorted array</td></tr>
+                            <tr><td>Population Variance</td><td>sum((x - mean)^2) / n</td></tr>
+                            <tr><td>Sample Variance</td><td>sum((x - mean)^2) / (n - 1)</td></tr>
+                            <tr><td>Standard Deviation</td><td>sqrt(variance)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sanitizer API -->
+            <section id="sanitizer-api">
+                <h2>Input Sanitizer</h2>
+                <p>Detects security threats and personally identifiable information (PII).</p>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.sanitizer.scan()</code>
+                    </div>
+                    <p>Scans input for XSS patterns (script tags, event handlers, javascript: protocol), SQL injection patterns (tautologies, stacked queries, comment-based), and PII (credit cards, SSNs, emails, phone numbers, API keys, IP addresses).</p>
+                </div>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.sanitizer.redact()</code>
+                    </div>
+                    <p>Replaces detected PII with placeholder tokens like <code>[EMAIL_REDACTED]</code>, <code>[SSN_REDACTED]</code>, <code>[CREDIT_CARD_REDACTED]</code>.</p>
+                </div>
+            </section>
+
+            <!-- CSV API -->
+            <section id="csv-api">
+                <h2>CSV to SQL</h2>
+                <p>Generates CREATE TABLE statements with automatic type inference.</p>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.csv.generate()</code>
+                    </div>
+                    <p>Parses CSV input, infers column types (INTEGER, NUMERIC, BOOLEAN, DATE, TIMESTAMP, VARCHAR, TEXT), and generates schema for the selected SQL dialect.</p>
+                    <h4>Supported Dialects</h4>
+                    <table>
+                        <thead><tr><th>Dialect</th><th>Notes</th></tr></thead>
+                        <tbody>
+                            <tr><td>PostgreSQL</td><td>NUMERIC, TIMESTAMP, BOOLEAN, VARCHAR</td></tr>
+                            <tr><td>MySQL</td><td>DECIMAL(12,2), BOOLEAN, VARCHAR</td></tr>
+                            <tr><td>SQLite</td><td>REAL, INTEGER, TEXT (simplified types)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Hash API -->
+            <section id="hash-api">
+                <h2>Hash &amp; Encode</h2>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method async">ASYNC</span>
+                        <code>DevLoft.hash.sha256()</code>
+                    </div>
+                    <p>Computes SHA-256 hash using the Web Crypto API. Returns a lowercase hex string.</p>
+                </div>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.hash.base64Encode()</code>
+                    </div>
+                    <p>Encodes input text to Base64. Handles Unicode via TextEncoder.</p>
+                </div>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.hash.urlEncode()</code>
+                    </div>
+                    <p>Applies <code>encodeURIComponent()</code> to the input text.</p>
+                </div>
+            </section>
+
+            <!-- Regex API -->
+            <section id="regex-api">
+                <h2>Regex Tester</h2>
+
+                <div class="endpoint">
+                    <div class="endpoint-header">
+                        <span class="method">FUNC</span>
+                        <code>DevLoft.regex.test()</code>
+                    </div>
+                    <p>Tests a regex pattern against the input string. Supports all standard JavaScript RegExp flags (g, i, m, s, u). Highlights matches in the output panel and shows capture group details.</p>
+                </div>
+            </section>
+
+            <!-- Errors -->
+            <section id="errors">
+                <h2>Error Handling</h2>
+                <p>All tools handle errors gracefully and display messages prefixed with a red cross icon in the output area.</p>
+                <table>
+                    <thead><tr><th>Error Type</th><th>Example</th></tr></thead>
+                    <tbody>
+                        <tr><td>Invalid JSON</td><td>Invalid JSON: Unexpected token at position 42</td></tr>
+                        <tr><td>Empty Input</td><td>Alert dialog: "Enter at least one number"</td></tr>
+                        <tr><td>Invalid Regex</td><td>Invalid regex: Unterminated group</td></tr>
+                        <tr><td>Invalid Base64</td><td>Invalid Base64: The string is not correctly encoded</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/docs.js"></script>
+</body>
+</html>
