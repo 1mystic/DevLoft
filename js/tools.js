@@ -1172,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const toolId = this.getAttribute('data-tool');
             activateTool(toolId);
-            window.location.hash = toolId;
+            history.replaceState(null, '', '#' + toolId);
         });
     });
 
@@ -1180,6 +1180,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.location.hash) {
         const toolId = window.location.hash.substring(1);
         activateTool(toolId);
+        // Ensure sidebar doesn't scroll from hash navigation
+        const sidebar = document.querySelector('.tools-sidebar');
+        if (sidebar) sidebar.scrollTop = 0;
+        const sidebarNav = document.querySelector('.sidebar-nav');
+        if (sidebarNav) sidebarNav.scrollTop = 0;
     }
 
     // Sidebar toggle (desktop)

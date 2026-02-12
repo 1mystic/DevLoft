@@ -20,7 +20,8 @@
     top: 0;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow: hidden;
+    overflow-anchor: none;
 }
 .docs-sidebar .sidebar-header {
     display: flex;
@@ -29,6 +30,10 @@
     padding: 20px;
     border-bottom: 1px solid var(--color-border);
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    background: var(--color-background);
+    z-index: 10;
 }
 .docs-sidebar .sidebar-header h3 {
     font-size: 1rem;
@@ -40,6 +45,7 @@
 .docs-sidebar .sidebar-nav {
     padding: 12px;
     flex-grow: 1;
+    overflow-y: auto;
 }
 .docs-sidebar .sidebar-nav ul { list-style: none; }
 .docs-sidebar .sidebar-nav ul li a {
